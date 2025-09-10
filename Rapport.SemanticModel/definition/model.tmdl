@@ -1,0 +1,55 @@
+model Model
+	culture: fr-FR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: fr-CM
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["SFX Purchase_Details","SFX Sale_Details","SFX Transactions_DETAILS","SFX vw_SubFiles","SFX Headers_Creditors","SFX Headers_Debtors","SFX vw_SubFiles_Operations","tq_Statuts_Operation","tn_Statuts_Dossiers"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.146.1454.0 (25.08)+901d6c338d1dea81ac3e53073ffb10469f0f37b8
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_59bcc0ac-38d2-4302-85fd-33cd49df67f2
+ref table 'SFX Purchase_Details'
+ref table LocalDateTable_c7d6221c-19c8-4024-bc9f-609d0525982c
+ref table 'SFX Sale_Details'
+ref table LocalDateTable_70e0c51b-9a68-4069-bc06-d896bbaccbdb
+ref table LocalDateTable_071f818a-e6d2-426b-a9aa-03be267ac438
+ref table LocalDateTable_ba29305e-b433-41a4-a788-e4ecfedfc20d
+ref table LocalDateTable_037e1261-69d4-4b20-93b8-5f32980cc3af
+ref table 'SFX Transactions_DETAILS'
+ref table LocalDateTable_915873c9-1722-4093-9c34-b8a09e64fb83
+ref table LocalDateTable_43b73c19-0cbc-40cd-8594-a1a9d6b7093d
+ref table LocalDateTable_32c22b1a-67a1-4414-92f2-c399805db407
+ref table LocalDateTable_6b1ec421-14e1-487a-9a14-78cc86e43cea
+ref table LocalDateTable_5305dbdb-ea6e-4f7d-bf00-6f70e1adb3af
+ref table Calendrier
+ref table LocalDateTable_504a3a66-5eb2-402e-96e5-b1054f07267b
+ref table 'SFX vw_SubFiles'
+ref table LocalDateTable_842dc967-5241-4e8f-aaa8-e94aa66ec074
+ref table LocalDateTable_664a1eb5-2f34-46c0-9552-d55fbed04416
+ref table LocalDateTable_87ef0f5e-4d4f-4e42-9a35-5f4d41d2ddc2
+ref table 'SFX Headers_Creditors'
+ref table LocalDateTable_198543a5-7478-4a37-9d82-48814414b75c
+ref table 'SFX Headers_Debtors'
+ref table LocalDateTable_527c943f-e554-4b42-8084-6c5cb4e76183
+ref table 'SFX vw_SubFiles_Operations'
+ref table LocalDateTable_3dbcaf63-a1d3-4848-827b-daddb05dcd00
+ref table LocalDateTable_4aeb279c-3d66-4779-a837-dc76217d61e9
+ref table LocalDateTable_54df0c4d-e928-4c8e-8aea-9afab295cb64
+ref table LocalDateTable_fe0d4507-5024-4ab4-bf8a-44a3a713cbb2
+ref table LocalDateTable_83793daf-614d-44b4-9b99-5929292b0e8b
+ref table LocalDateTable_9d9523cc-8be0-45ec-8607-971f640990b4
+ref table tq_Statuts_Operation
+ref table LocalDateTable_64ae21c6-bfd0-44f2-989e-20dac19c1340
+ref table LocalDateTable_41675131-24ce-433a-88e7-aa5103576059
+ref table tn_Statuts_Dossiers
+ref table LocalDateTable_d0b52597-ce27-4c05-af43-7d435d67f9e8
+
+ref cultureInfo fr-FR
+

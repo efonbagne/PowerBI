@@ -1,0 +1,623 @@
+table 'SFX Sale_Details'
+	lineageTag: 0bd6b750-e9b9-480d-8537-18ef6c11a250
+
+	column 'Doc No'
+		dataType: string
+		lineageTag: 82c8b29e-6c2f-4c0e-826a-c70c2617e9ae
+		summarizeBy: none
+		sourceColumn: Doc No
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Account No'
+		dataType: string
+		isHidden
+		lineageTag: 00cad99e-d482-443e-9e33-d4b1845e089c
+		summarizeBy: none
+		sourceColumn: Account No
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Account Name'
+		dataType: string
+		isHidden
+		lineageTag: b19c1be7-5628-4fdb-82e2-5a2c4f32caec
+		summarizeBy: none
+		sourceColumn: Account Name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Account Group Name'
+		dataType: string
+		lineageTag: fe00094c-ac34-4b0d-84c1-4db8f71f1369
+		summarizeBy: none
+		sourceColumn: Account Group Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Descr
+		dataType: string
+		lineageTag: 35293fec-b9e7-43df-ba2c-8f3dd85307b6
+		summarizeBy: none
+		sourceColumn: Descr
+
+		annotation SummarizationSetBy = Automatic
+
+	column Amount0
+		dataType: decimal
+		lineageTag: 2cba4a1e-bc81-47f7-94e2-a63fad984547
+		summarizeBy: sum
+		sourceColumn: Amount0
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Amount1
+		dataType: decimal
+		lineageTag: fc009fea-cd2c-4afb-aa55-320bf66a1004
+		summarizeBy: sum
+		sourceColumn: Amount1
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Amount2
+		dataType: decimal
+		lineageTag: 7176d75e-c806-4ab7-ac2b-84bede3168d7
+		summarizeBy: sum
+		sourceColumn: Amount2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Tax ID'
+		dataType: string
+		lineageTag: 237f15a1-0a0c-4164-aa6a-f151204cfeaa
+		summarizeBy: none
+		sourceColumn: Tax ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column VAT0
+		dataType: double
+		lineageTag: 866b6a41-1d81-4343-bcb4-90475d4c2456
+		summarizeBy: sum
+		sourceColumn: VAT0
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VAT1
+		dataType: decimal
+		lineageTag: c715970c-0de3-43ee-8924-1435b06a44d9
+		summarizeBy: sum
+		sourceColumn: VAT1
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VAT2
+		dataType: decimal
+		lineageTag: 42c75f3f-ef17-4514-9364-70649251ce5f
+		summarizeBy: sum
+		sourceColumn: VAT2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Article ID'
+		dataType: string
+		lineageTag: cc7ba6b6-b5cb-4bc3-8656-131677789b86
+		summarizeBy: none
+		sourceColumn: Article ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Article Group'
+		dataType: string
+		lineageTag: 175045a9-317e-433b-a10e-233532df2c3d
+		summarizeBy: none
+		sourceColumn: Article Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column Commission
+		dataType: decimal
+		lineageTag: 3431e63a-6962-43ae-afe4-9b539a921590
+		summarizeBy: sum
+		sourceColumn: Commission
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Doc Type Name'
+		dataType: string
+		lineageTag: 2ace3504-c3d9-4a78-b592-826b943894f6
+		summarizeBy: none
+		sourceColumn: Doc Type Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Doc Category Name'
+		dataType: string
+		lineageTag: 2252c5f1-c71f-4513-8bcb-b5e9a34e91b0
+		summarizeBy: none
+		sourceColumn: Doc Category Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Accounting Period'
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: dee57dc5-c75c-4e8c-87b4-df13aeac8437
+		summarizeBy: none
+		sourceColumn: Accounting Period
+
+		variation Variation
+			isDefault
+			relationship: d39a26bf-ebc0-4ad6-ba17-a5209d06897f
+			defaultHierarchy: LocalDateTable_842dc967-5241-4e8f-aaa8-e94aa66ec074.'Hiérarchie de dates'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'Document Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 3b6afe60-a2d4-43e3-abec-4cb34016ed6b
+		summarizeBy: none
+		sourceColumn: Document Date
+
+		variation Variation
+			isDefault
+			relationship: 57bffc18-ddd9-4161-a483-9c201ad38fc0
+			defaultHierarchy: LocalDateTable_41675131-24ce-433a-88e7-aa5103576059.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Transaction Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 13b2130e-e653-4371-a79c-f8e89da9e4aa
+		summarizeBy: none
+		sourceColumn: Transaction Date
+
+		variation Variation
+			isDefault
+			relationship: fb31e1c5-5b1a-4a5f-91bc-dfe84cc10662
+			defaultHierarchy: LocalDateTable_70e0c51b-9a68-4069-bc06-d896bbaccbdb.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Subject
+		dataType: string
+		lineageTag: cb2a6179-88e9-4498-90b1-b3adc1b2ebdd
+		summarizeBy: none
+		sourceColumn: Subject
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Responsible ID'
+		dataType: string
+		lineageTag: 489de81f-911d-4b79-9725-c9758e3d32c5
+		summarizeBy: none
+		sourceColumn: Responsible ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Currency0
+		dataType: string
+		lineageTag: 05ca8085-62d9-4c10-b621-d514d4b2ba53
+		summarizeBy: none
+		sourceColumn: Currency0
+
+		annotation SummarizationSetBy = Automatic
+
+	column Currency1
+		dataType: string
+		lineageTag: 5ec901a6-52eb-47ae-bc38-aa58874f9405
+		summarizeBy: none
+		sourceColumn: Currency1
+
+		annotation SummarizationSetBy = Automatic
+
+	column Currency2
+		dataType: string
+		lineageTag: 8ccd59cb-0720-4f16-93d2-c26f424828c0
+		summarizeBy: none
+		sourceColumn: Currency2
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Validation Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 73088546-6d0c-41b1-aa49-681c26c31aab
+		summarizeBy: none
+		sourceColumn: Validation Date
+
+		variation Variation
+			isDefault
+			relationship: 3900572f-d20a-4ef6-a18d-5989c28e032f
+			defaultHierarchy: LocalDateTable_071f818a-e6d2-426b-a9aa-03be267ac438.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Posting Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b14057f6-c176-449c-a5d1-28d9ba0558e9
+		summarizeBy: none
+		sourceColumn: Posting Date
+
+		variation Variation
+			isDefault
+			relationship: 57058211-4a7d-4184-8ab4-e25c87c7ab1d
+			defaultHierarchy: LocalDateTable_ba29305e-b433-41a4-a788-e4ecfedfc20d.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Reversal Doc No'
+		dataType: string
+		lineageTag: fa58cae1-2b04-44e0-bf8c-eb55b6d923ea
+		summarizeBy: none
+		sourceColumn: Reversal Doc No
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Allocate Status'
+		dataType: string
+		lineageTag: bc0522f1-3533-48c9-bb54-408901c0f389
+		summarizeBy: none
+		sourceColumn: Allocate Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Doc Status ID'
+		dataType: string
+		lineageTag: 609aaced-834f-498f-bf72-7f1606aa9c4c
+		summarizeBy: none
+		sourceColumn: Doc Status ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Doc Status Name'
+		dataType: string
+		lineageTag: 2fce2819-dba5-404a-a4b0-1ac2c071d267
+		summarizeBy: none
+		sourceColumn: Doc Status Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Debtor ID'
+		dataType: string
+		lineageTag: b8af1bac-98ff-45de-886a-e3608d4edef3
+		summarizeBy: none
+		sourceColumn: Debtor ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Debtor Name'
+		dataType: string
+		lineageTag: 310cd8d5-2231-45be-b479-e75fa2e6c6d9
+		summarizeBy: none
+		sourceColumn: Debtor Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'VAT ID'
+		dataType: string
+		lineageTag: d59e6678-cfb1-4343-b4b1-894581a3536d
+		summarizeBy: none
+		sourceColumn: VAT ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sale Item ID'
+		dataType: string
+		lineageTag: 94c73166-dfeb-4d1d-87c4-db3dc05c5510
+		summarizeBy: none
+		sourceColumn: Sale Item ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sale Item Name'
+		dataType: string
+		lineageTag: 412e2d7e-bb61-46e1-951f-cbf83c096945
+		summarizeBy: none
+		sourceColumn: Sale Item Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sale Group ID'
+		dataType: string
+		lineageTag: a0e352c7-6804-4dae-8e1c-afd011cda240
+		summarizeBy: none
+		sourceColumn: Sale Group ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sale Group Name'
+		dataType: string
+		lineageTag: bfb032f7-95ea-4112-8adc-654a4bbdb8fa
+		summarizeBy: none
+		sourceColumn: Sale Group Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column SubFile
+		dataType: string
+		lineageTag: 1d5ceb9c-4110-48ee-871b-4e11a1b11a30
+		summarizeBy: none
+		sourceColumn: SubFile
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Operation Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 70047e4d-22ad-4130-8b9e-aebaf24c92d5
+		summarizeBy: none
+		sourceColumn: Operation Date
+
+		variation Variation
+			isDefault
+			relationship: fb8cbe25-bc67-441c-aa67-f9bce2b0222c
+			defaultHierarchy: LocalDateTable_037e1261-69d4-4b20-93b8-5f32980cc3af.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Customer ID'
+		dataType: string
+		lineageTag: c629ad24-ac10-4012-8787-484ef66f311b
+		summarizeBy: none
+		sourceColumn: Customer ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Name'
+		dataType: string
+		lineageTag: e61edfbc-a5bb-4edb-841b-eb2f3e64ce01
+		summarizeBy: none
+		sourceColumn: Customer Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'File No'
+		dataType: string
+		lineageTag: 182af6a2-9797-4dc6-9fc9-d64920655b70
+		summarizeBy: none
+		sourceColumn: File No
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Master Customer ID'
+		dataType: string
+		lineageTag: eb2acfea-a869-44ca-9938-e647cc9329fc
+		summarizeBy: none
+		sourceColumn: Master Customer ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Master Customer Name'
+		dataType: string
+		lineageTag: a0ec7d2a-3577-4bf5-a1a3-8f67c13d0a14
+		summarizeBy: none
+		sourceColumn: Master Customer Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Group ID'
+		dataType: string
+		lineageTag: 3cfa2162-e4d3-4b64-a1ad-e1fde24d4695
+		summarizeBy: none
+		sourceColumn: Customer Group ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Group Name'
+		dataType: string
+		lineageTag: bd901b6f-059f-4947-9bcd-76dfdc9485aa
+		summarizeBy: none
+		sourceColumn: Customer Group Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'File Type ID'
+		dataType: string
+		lineageTag: 54896ab3-6709-4bc5-ba82-587adff69474
+		summarizeBy: none
+		sourceColumn: File Type ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'File Type Name'
+		dataType: string
+		lineageTag: b133bf4e-cb67-4c54-ab10-64e56e0bc4df
+		summarizeBy: none
+		sourceColumn: File Type Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Activity ID'
+		dataType: string
+		lineageTag: 036e0ed6-8c16-4dab-8136-d9b487831803
+		summarizeBy: none
+		sourceColumn: Activity ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Activity Name'
+		dataType: string
+		lineageTag: 4d1c3c93-0e2d-40d5-929f-680d0206bd0f
+		summarizeBy: none
+		sourceColumn: Activity Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Module ID'
+		dataType: string
+		lineageTag: b55c5c81-8a9f-443e-8447-67516f2302dc
+		summarizeBy: none
+		sourceColumn: Module ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Module Name'
+		dataType: string
+		lineageTag: c52f93a5-9292-496c-8f54-9b16020b64ce
+		summarizeBy: none
+		sourceColumn: Module Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Traffic ID'
+		dataType: string
+		lineageTag: f7cbb312-696b-40d1-9042-09270b62bf1d
+		summarizeBy: none
+		sourceColumn: Traffic ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Traffic Name'
+		dataType: string
+		lineageTag: 4a722683-5625-44c3-a94e-7d530a75e98e
+		summarizeBy: none
+		sourceColumn: Traffic Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Transport Mode ID'
+		dataType: string
+		lineageTag: 984496ad-8ad4-4d93-b088-074b18dc97e7
+		summarizeBy: none
+		sourceColumn: Transport Mode ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Transport Mode Name'
+		dataType: string
+		lineageTag: 340291e1-7448-4756-bc7d-9b76c21d8ba3
+		summarizeBy: none
+		sourceColumn: Transport Mode Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'File Period'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: cf5039f5-3e64-4c56-ae20-cf4918e203b8
+		summarizeBy: none
+		sourceColumn: File Period
+
+		variation Variation
+			isDefault
+			relationship: 1e7acc53-065e-4d2d-8eae-ddeae48062b3
+			defaultHierarchy: LocalDateTable_504a3a66-5eb2-402e-96e5-b1054f07267b.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'File Status ID'
+		dataType: string
+		lineageTag: d7bc0e94-b6e3-4469-8456-d1e850ddbafe
+		summarizeBy: none
+		sourceColumn: File Status ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'File Status Name'
+		dataType: string
+		lineageTag: 25efbb9b-9f0f-4d91-b474-e542ce316312
+		summarizeBy: none
+		sourceColumn: File Status Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Type de Revenu' = ```
+			
+			SWITCH(TRUE(),
+			    CONTAINSSTRING(LOWER('SFX Sale_Details'[Descr]), "commission") || 
+			    CONTAINSSTRING(LOWER('SFX Sale_Details'[Descr]), "honoraire") || 
+			    CONTAINSSTRING(LOWER('SFX Sale_Details'[Descr]), "file revenue"), "Revenu Propre",
+			    CONTAINSSTRING(LOWER('SFX Sale_Details'[Descr]), "outlays") || 
+			    CONTAINSSTRING(LOWER('SFX Sale_Details'[Descr]), "droits") || 
+			    CONTAINSSTRING(LOWER('SFX Sale_Details'[Descr]), "douane") || 
+			    CONTAINSSTRING(LOWER('SFX Sale_Details'[Descr]), "frais") || 
+			    CONTAINSSTRING(LOWER('SFX Sale_Details'[Descr]), "manutention") || 
+			    CONTAINSSTRING(LOWER('SFX Sale_Details'[Descr]), "transport"), "Refacturation",
+			    "Autre"
+			)
+			
+			```
+		lineageTag: 06bbc460-f2b4-44bf-a3d5-ff3cb9a6e3d7
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'SFX Sale_Details' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("SFX-HP-01", "BrainOpxOMAGH0"),
+				    SFX_Sale_Details = Source{[Schema="SFX",Item="Sale_Details"]}[Data],
+				    #"Colonnes supprimées" = Table.RemoveColumns(SFX_Sale_Details,{"Row ID", "Tmp Doc No", "Account Node ID", "Account Node Name", "Account SubGroup ID", "Account SubGroup Name", "Account Group ID", "Account Type ID", "Account Type Name", "Account Type Category", "Account Type Parameter", "Is Margin Excluded"}),
+				    #"Type modifié" = Table.TransformColumnTypes(#"Colonnes supprimées",{{"Amount0", Currency.Type}, {"Amount1", Currency.Type}, {"Amount2", Currency.Type}}),
+				    #"Valeur remplacée" = Table.ReplaceValue(#"Type modifié",null,"",Replacer.ReplaceValue,{"Tax ID"}),
+				    #"Colonnes supprimées1" = Table.RemoveColumns(#"Valeur remplacée",{"Tax Name"}),
+				    #"Type modifié1" = Table.TransformColumnTypes(#"Colonnes supprimées1",{{"VAT1", Currency.Type}, {"VAT2", Currency.Type}}),
+				    #"Colonnes supprimées2" = Table.RemoveColumns(#"Type modifié1",{"Order"}),
+				    #"Type modifié2" = Table.TransformColumnTypes(#"Colonnes supprimées2",{{"Unit Prize", Currency.Type}}),
+				    #"Colonnes supprimées3" = Table.RemoveColumns(#"Type modifié2",{"Qty"}),
+				    #"Valeur remplacée1" = Table.ReplaceValue(#"Colonnes supprimées3",null,"",Replacer.ReplaceValue,{"Article ID"}),
+				    #"Valeur remplacée2" = Table.ReplaceValue(#"Valeur remplacée1",null,"",Replacer.ReplaceValue,{"Article Name"}),
+				    #"Colonnes supprimées4" = Table.RemoveColumns(#"Valeur remplacée2",{"Article Name"}),
+				    #"Valeur remplacée3" = Table.ReplaceValue(#"Colonnes supprimées4",null,"",Replacer.ReplaceValue,{"Article Group"}),
+				    #"Colonnes supprimées5" = Table.RemoveColumns(#"Valeur remplacée3",{"Cost Center ID", "Cost Center Name", "Cost Center Group", "Cost Center Mapping"}),
+				    #"Type modifié3" = Table.TransformColumnTypes(#"Colonnes supprimées5",{{"Commission", Currency.Type}}),
+				    #"Colonnes supprimées6" = Table.RemoveColumns(#"Type modifié3",{"Reference", "Is Reclassified", "Agency ID", "Agency Name", "Agency Branch", "Agency Group Id", "Agency Group Name", "Doc Type ID", "Doc Numbering Type ID", "Doc Category ID", "Doc Numbering Type Name", "Doc Reference"}),
+				    #"Type modifié4" = Table.TransformColumnTypes(#"Colonnes supprimées6",{{"Accounting Period", type date}, {"Document Date", type date}}),
+				    #"Colonnes supprimées7" = Table.RemoveColumns(#"Type modifié4",{"Division Name", "Is Warehousing", "Is Invoiced", "Division ID"}),
+				    #"Type modifié5" = Table.TransformColumnTypes(#"Colonnes supprimées7",{{"Accounting Period", type date}}),
+				    #"Colonnes supprimées8" = Table.RemoveColumns(#"Type modifié5",{"Is Posted", "Is Verify"}),
+				    #"Valeur remplacée4" = Table.ReplaceValue(#"Colonnes supprimées8",null,"",Replacer.ReplaceValue,{"Activity ID"}),
+				    #"Lignes filtrées" = Table.SelectRows(#"Valeur remplacée4", each true),
+				    #"Colonnes supprimées9" = Table.RemoveColumns(#"Lignes filtrées",{"Customer Ref"}),
+				    #"Type modifié6" = Table.TransformColumnTypes(#"Colonnes supprimées9",{{"Operation Date", type date}}),
+				    #"Colonnes supprimées10" = Table.RemoveColumns(#"Type modifié6",{"Index", "Sale Group Order", "Analytical Grouping", "Is Debtor Master Customer"}),
+				    #"Type modifié7" = Table.TransformColumnTypes(#"Colonnes supprimées10",{{"Posting Date", type date}, {"Validation Date", type date}}),
+				    #"Colonnes supprimées11" = Table.RemoveColumns(#"Type modifié7",{"Exch Rate2", "Exch Rate1"}),
+				    #"Type modifié8" = Table.TransformColumnTypes(#"Colonnes supprimées11",{{"Transaction Date", type date}}),
+				    #"Colonnes supprimées12" = Table.RemoveColumns(#"Type modifié8",{"Unit Prize"})
+				in
+				    #"Colonnes supprimées12"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

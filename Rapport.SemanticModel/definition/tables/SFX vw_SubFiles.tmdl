@@ -1,0 +1,161 @@
+table 'SFX vw_SubFiles'
+	lineageTag: 57ad1efd-d156-4427-a796-9d34dee47f67
+
+	measure Nb_Dossiers = DISTINCTCOUNT('SFX vw_SubFiles'[SubFile])
+		formatString: 0
+		lineageTag: 421c3989-0302-496a-b36d-e89ea5bead36
+
+	measure 'Sous titre Drs' = "Total des dossiers traités : "&[Nb_Dossiers]
+		lineageTag: 3d5cc667-f0b1-4e8d-81ef-2eb573fee323
+
+	measure Taux_Marge_XOF =
+			
+			DIVIDE(
+			    SUM('SFX Sale_Details'[Amount1]) - SUM('SFX Purchase_Details'[Amount1]),
+			    SUM('SFX Sale_Details'[Amount1])
+			)
+		lineageTag: 8d6e492d-46d5-4d4f-a073-97ccb4747ae6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Achats Directs' =
+			
+			CALCULATE(
+			    SUM('SFX Purchase_Details'[Amount0]),
+			    NOT(ISBLANK('SFX Purchase_Details'[SubFile]))
+			)
+		formatString: #,0.###############\ "FCFA";-#,0.###############\ "FCFA";#,0.###############\ "FCFA"
+		lineageTag: 11b8372e-f9d9-4297-abd7-37e94d16bf45
+
+		annotation PBI_FormatHint = {"currencyCulture":"fr-CM"}
+
+	measure 'Achats Indirects' =
+			
+			CALCULATE(
+			    SUM('SFX Purchase_Details'[Amount0]),
+			    ISBLANK('SFX Purchase_Details'[SubFile])
+			)
+		formatString: #,0.###############\ "FCFA";-#,0.###############\ "FCFA";#,0.###############\ "FCFA"
+		lineageTag: 0bc895f9-cd19-4d5f-bcb5-36907f45c8c8
+
+		annotation PBI_FormatHint = {"currencyCulture":"fr-CM"}
+
+	column SubFile
+		dataType: string
+		lineageTag: 7a56713f-8726-4fc7-9224-54d7ad3f6347
+		summarizeBy: none
+		sourceColumn: SubFile
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer ID'
+		dataType: string
+		lineageTag: b66ece94-c186-44dc-b860-b1e9d9745199
+		summarizeBy: none
+		sourceColumn: Customer ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Name'
+		dataType: string
+		lineageTag: 93c89e21-0126-4117-9329-acffd32c85c8
+		summarizeBy: none
+		sourceColumn: Customer Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Responsible Name'
+		dataType: string
+		lineageTag: f0f2d48c-f72d-4c71-bf29-0ffbba8f32b0
+		summarizeBy: none
+		sourceColumn: Responsible Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'File Period'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ea319c0b-071d-4d12-a9e3-cfe7437d54d3
+		summarizeBy: none
+		sourceColumn: File Period
+
+		variation Variation
+			isDefault
+			relationship: 50efa392-d24c-4850-86f5-a57eeb92366c
+			defaultHierarchy: LocalDateTable_d0b52597-ce27-4c05-af43-7d435d67f9e8.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'File Type Name'
+		dataType: string
+		lineageTag: f433362b-9072-4338-aab9-e072830c8544
+		summarizeBy: none
+		sourceColumn: File Type Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Activity Name'
+		dataType: string
+		lineageTag: 73fa8bdd-0726-438c-89cc-f97ccf331500
+		summarizeBy: none
+		sourceColumn: Activity Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Module Name'
+		dataType: string
+		lineageTag: 76f8c26d-c47b-4de0-b007-906c72c8341f
+		summarizeBy: none
+		sourceColumn: Module Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Traffic Name'
+		dataType: string
+		lineageTag: c9dacaaf-10b9-47f9-bd5b-f4a124779e2a
+		summarizeBy: none
+		sourceColumn: Traffic Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Transport Mode Name'
+		dataType: string
+		lineageTag: 7141e304-53de-409c-ad0a-1d6658f450d1
+		summarizeBy: none
+		sourceColumn: Transport Mode Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'File Status ID'
+		dataType: string
+		lineageTag: 281fb474-4c37-41ac-b8e6-fe0a078f50d7
+		summarizeBy: none
+		sourceColumn: File Status ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Avec Sans' = IF(ISBLANK([SubFile]), "Sans dossier", "Avec dossier")
+		lineageTag: 30042710-bfd9-4ffb-8441-9c5b9943ed9a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'SFX vw_SubFiles' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("SFX-HP-01"),
+				    BopxCWE = Source{[Name="BrainOpxOMAGH0"]}[Data],
+				    SFX_vw_SubFiles = BopxCWE{[Schema="SFX",Item="vw_SubFiles"]}[Data],
+				    #"Colonnes supprimées" = Table.RemoveColumns(SFX_vw_SubFiles,{"Index"}),
+				    #"Type modifié" = Table.TransformColumnTypes(#"Colonnes supprimées",{{"Operation Date", type date}}),
+				    #"Colonnes supprimées1" = Table.RemoveColumns(#"Type modifié",{"Operation Closing Date", "Customer Ref", "Customer Locality", "Customer Country ID", "Customer Country Name", "Customer CO", "Quotation No", "Is Excluded Statistic", "SubFile Observation", "BL Text", "Packing List Text", "Complements Text", "Regimes Text", "Client Network", "Shipping Line", "Airline", "FreeDays", "Linked File No", "Master Customer ID", "Master Customer Name", "Master Customer Locality", "Master Customer Country ID", "Master Customer Country Name", "Customer Group ID", "Customer Group Name", "Agency ID", "Agency Name", "Agency Branch", "Branch Mapping", "Agency Group Id", "Agency Group Name", "Activity ID", "Module ID", "File Type ID", "Traffic ID", "Transport Mode ID", "Is Monthly", "Division ID", "Division Name", "Is Warehousing", "Last Control Date", "Is Invoiced", "Opening Date", "Closing Date", "File Duration", "Last Step Item ID", "Last Step Item Name", "Last Step Start Date", "Last Step End Date", "Last Process Duration", "Last Process Status", "Last Process Deadline Duration", "Last Process Delay Duration", "Last Step Duration", "Last Step Qty", "Last Step Reference", "Last Step Index", "Last Step Category", "Last Step Observation", "Last Step Update", "File Numbering ID", "Module Profile", "File Status Index", "Operation Date", "Responsible ID", "File No", "File Status Name"})
+				in
+				    #"Colonnes supprimées1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

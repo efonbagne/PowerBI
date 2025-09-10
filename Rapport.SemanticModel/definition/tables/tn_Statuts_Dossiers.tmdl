@@ -1,0 +1,34 @@
+table tn_Statuts_Dossiers
+	lineageTag: ada08bdc-7bd0-4a29-80bc-337433fc97e4
+
+	column 'Code Statut Dossier'
+		dataType: string
+		lineageTag: da545fec-33b3-42f6-b0dc-ce0bb93cf1e4
+		summarizeBy: none
+		sourceColumn: Code Statut Dossier
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Libelle Statut Dossier'
+		dataType: string
+		lineageTag: d97401a0-604f-4f41-9f9b-a952fa3a10bc
+		summarizeBy: none
+		sourceColumn: Libelle Statut Dossier
+
+		annotation SummarizationSetBy = Automatic
+
+	partition tn_Statuts_Dossiers = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("SFX-HP-01"),
+				    BopxCWE = Source{[Name="BrainOpxOMAGH0"]}[Data],
+				    dbo_tn_Statuts_Dossiers = BopxCWE{[Schema="dbo",Item="tn_Statuts_Dossiers"]}[Data],
+				    #"Colonnes supprimées" = Table.RemoveColumns(dbo_tn_Statuts_Dossiers,{"Code Valeur", "Session", "AddNewTime", "EditTime", "Description Statut Dossier"})
+				in
+				    #"Colonnes supprimées"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

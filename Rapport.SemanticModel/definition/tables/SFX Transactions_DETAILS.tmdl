@@ -1,0 +1,1124 @@
+table 'SFX Transactions_DETAILS'
+	lineageTag: 1ea8282f-925f-4688-9506-f27421125452
+
+	measure 'Total Ventes XOF Client' = ```
+			
+			CALCULATE(
+			    SUMX(
+			        'SFX Transactions_DETAILS',
+			        'SFX Transactions_DETAILS'[Amount1] + 'SFX Transactions_DETAILS'[VAT1]),
+			    'SFX Transactions_DETAILS'[Doc Category ID] = "C",
+			    'SFX Transactions_DETAILS'[Currency1] = "XOF",
+			    'SFX Transactions_DETAILS'[Doc Type Name] IN {
+			        "Invoice for Customer", 
+			        "Credit Note for Customer"
+			    }
+			)
+			```
+		lineageTag: a75cd9fe-7ff0-4818-b9cc-5ded8fe3f718
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Achats Fournisseur' = ```
+			
+			CALCULATE(
+			    SUM('SFX Transactions_DETAILS'[Amount1]),
+			    'SFX Transactions_DETAILS'[Doc Category ID] = "F",
+			    'SFX Transactions_DETAILS'[Doc Type Name] IN {
+			        "Invoice of Supplier", 
+			        "Credit Note of Supplier"
+			    }
+			)
+			```
+		lineageTag: d875a0c2-1664-425f-af6c-e4e9427bf493
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Encaissements =
+			
+			CALCULATE(
+			    SUM('SFX Transactions_DETAILS'[Amount1]),
+			    'SFX Transactions_DETAILS'[Doc Category ID] IN { "R", "T" },
+			    'SFX Transactions_DETAILS'[Doc Type Name] IN { "Bank IN", "Bank IN (Customer)", "Bank IN (Supplier)", "Cash IN", "Cash IN (Customer)", "Cash IN (Supplier)" }
+			)
+		lineageTag: 6ef57b0a-971d-4179-8171-234c7e95fb97
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Décaissements =
+			
+			CALCULATE(
+			    SUM('SFX Transactions_DETAILS'[Amount1]),
+			    'SFX Transactions_DETAILS'[Doc Category ID] IN { "R", "T" },
+			    'SFX Transactions_DETAILS'[Doc Type Name] IN { "Bank OUT", "Bank OUT (Supplier)", "Bank OUT (Customer)", "Cash OUT", "Cash OUT (Supplier)",  "Cash OUT (Customer)" }
+			)
+		lineageTag: 235cbd22-8181-4bc9-98e7-c009395f5625
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Montant_XOF =
+			
+			CALCULATE(
+			    SUMX(
+			        'SFX Transactions_DETAILS',
+			        'SFX Transactions_DETAILS'[Amount0] + 'SFX Transactions_DETAILS'[VAT1]),
+			    'SFX Transactions_DETAILS'[Currency0] = "XOF"
+			)
+		lineageTag: 4c71ee35-5e3a-4709-9662-9d1329b860be
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Montant_EUR =
+			
+			CALCULATE(
+			    SUMX(
+			        'SFX Transactions_DETAILS',
+			        'SFX Transactions_DETAILS'[Amount0] + 'SFX Transactions_DETAILS'[VAT2]),
+			    'SFX Transactions_DETAILS'[Currency0] = "EUR"
+			)
+		lineageTag: 206772f0-1b50-462f-82c5-0dfe74e4d016
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Montant_USD =
+			
+			CALCULATE(
+			    SUM('SFX Transactions_DETAILS'[Amount0]),
+			    'SFX Transactions_DETAILS'[Currency0] = "USD"
+			)
+		lineageTag: 94ce8aa1-6c10-4da8-b528-fb34bb4289d2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Ventes EUR Client' = ```
+			
+			CALCULATE(
+			    SUMX(
+			        'SFX Transactions_DETAILS',
+			        'SFX Transactions_DETAILS'[Amount0] + 'SFX Transactions_DETAILS'[VAT0]),
+			    'SFX Transactions_DETAILS'[Doc Category ID] = "C",
+			    'SFX Transactions_DETAILS'[Currency0] = "EUR",
+			    'SFX Transactions_DETAILS'[Doc Type Name] IN {
+			        "Invoice for Customer", 
+			        "Credit Note for Customer"
+			    }
+			)
+			```
+		lineageTag: d0a1e00c-0c0a-471d-bbd5-3a2207ff36f6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Ventes USD Client' = ```
+			
+			CALCULATE(
+			    SUMX(
+			        'SFX Transactions_DETAILS',
+			        'SFX Transactions_DETAILS'[Amount0] + 'SFX Transactions_DETAILS'[VAT0]),
+			    'SFX Transactions_DETAILS'[Doc Category ID] = "C",
+			    'SFX Transactions_DETAILS'[Currency0] = "USD",
+			    'SFX Transactions_DETAILS'[Doc Type Name] IN {
+			        "Invoice for Customer", 
+			        "Credit Note for Customer"
+			    }
+			)
+			```
+		lineageTag: 32f2f812-ba7b-411e-8435-fdb01793eec8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Achats Fournisseur EUR' = ```
+			
+			CALCULATE(
+			    SUM('SFX Transactions_DETAILS'[Amount0]),
+			    'SFX Transactions_DETAILS'[Doc Category ID] = "F",
+			    'SFX Transactions_DETAILS'[Currency0] = "EUR",
+			    'SFX Transactions_DETAILS'[Doc Type Name] IN {
+			        "Invoice of Supplier", 
+			        "Credit Note of Supplier"
+			    }
+			)
+			```
+		lineageTag: 357fc33e-338d-436f-b2d9-fb20c5bb4780
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Achats Fournisseur USD' = ```
+			
+			CALCULATE(
+			    SUM('SFX Transactions_DETAILS'[Amount0]),
+			    'SFX Transactions_DETAILS'[Doc Category ID] = "F",
+			    'SFX Transactions_DETAILS'[Currency0] = "USD",
+			    'SFX Transactions_DETAILS'[Doc Type Name] IN {
+			        "Invoice of Supplier", 
+			        "Credit Note of Supplier"
+			    }
+			)
+			```
+		lineageTag: 0fa140e9-2b4a-42ab-8056-d0d4177ae6bc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Taux_Marge_Brute = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUMX(
+			            'SFX Transactions_DETAILS',
+			            'SFX Transactions_DETAILS'[Amount1] + 'SFX Transactions_DETAILS'[VAT1]
+			        ),
+			        'SFX Transactions_DETAILS'[Doc Category ID] = "C",
+			        NOT ISBLANK('SFX Transactions_DETAILS'[SubFile])
+			    )
+			    +
+			    CALCULATE(
+			        SUMX(
+			            'SFX Transactions_DETAILS',
+			            'SFX Transactions_DETAILS'[Amount1] + 'SFX Transactions_DETAILS'[VAT1]
+			        ),
+			        'SFX Transactions_DETAILS'[Doc Category ID] = "F",
+			        NOT ISBLANK('SFX Transactions_DETAILS'[SubFile])
+			    ),
+			    CALCULATE(
+			        SUMX(
+			            'SFX Transactions_DETAILS',
+			            'SFX Transactions_DETAILS'[Amount1] + 'SFX Transactions_DETAILS'[VAT1]
+			        ),
+			        'SFX Transactions_DETAILS'[Doc Category ID] = "C",
+			        NOT ISBLANK('SFX Transactions_DETAILS'[SubFile])
+			    ),
+			    0
+			)
+			
+			```
+		lineageTag: d3315c77-f75d-48aa-adcc-241bb19693db
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'SOLDE XOF' =
+			
+			[Total Ventes XOF Client] + [Total Achats Fournisseur]
+		lineageTag: d957788b-5982-4adc-823a-e4211dde64f3
+
+		extendedProperty MeasureTemplate =
+				{
+				  "version": 0,
+				  "daxTemplateName": "MathematicalAddition"
+				}
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Row ID'
+		dataType: string
+		lineageTag: ed58c32c-5c5c-4daa-bdf6-c72ae4274c75
+		summarizeBy: none
+		sourceColumn: Row ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Doc No'
+		dataType: string
+		lineageTag: 0115c393-8323-48e0-9f56-b7a56d9cbcac
+		summarizeBy: none
+		sourceColumn: Doc No
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tmp Doc No'
+		dataType: string
+		lineageTag: c220dfae-0d49-4188-b189-c0de2fe12915
+		summarizeBy: none
+		sourceColumn: Tmp Doc No
+
+		annotation SummarizationSetBy = Automatic
+
+	column Descr
+		dataType: string
+		lineageTag: 6d22641d-ff01-43e8-be23-fec2827e6726
+		summarizeBy: none
+		sourceColumn: Descr
+
+		annotation SummarizationSetBy = Automatic
+
+	column Reference
+		dataType: string
+		lineageTag: e8b7b894-01de-4328-b30d-9690d3b6133c
+		summarizeBy: none
+		sourceColumn: Reference
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Account No'
+		dataType: string
+		lineageTag: 2cfb13cd-48a9-41bb-8145-62262686dd82
+		summarizeBy: none
+		sourceColumn: Account No
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Account Name'
+		dataType: string
+		lineageTag: bcadd038-33c9-4f5e-b1fc-be8b016495de
+		summarizeBy: none
+		sourceColumn: Account Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Account Node ID'
+		dataType: string
+		lineageTag: 86d03646-6fe1-4eff-bce2-3f35dd17dc87
+		summarizeBy: none
+		sourceColumn: Account Node ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Account Node Name'
+		dataType: string
+		lineageTag: fbbea319-3d10-46dd-b297-f48346c4e826
+		summarizeBy: none
+		sourceColumn: Account Node Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Account SubGroup ID'
+		dataType: string
+		lineageTag: 357d66a6-78fa-4883-b6c8-b32ca3959e79
+		summarizeBy: none
+		sourceColumn: Account SubGroup ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Account SubGroup Name'
+		dataType: string
+		lineageTag: a6ed8546-5c50-416c-8f5b-6ae8a184f9dc
+		summarizeBy: none
+		sourceColumn: Account SubGroup Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Account Group ID'
+		dataType: string
+		lineageTag: f7c9374f-85f3-4110-b3aa-c51f1937a58a
+		summarizeBy: none
+		sourceColumn: Account Group ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Account Group Name'
+		dataType: string
+		lineageTag: 72fa434b-d4ce-4565-ae62-5fb0465fb36a
+		summarizeBy: none
+		sourceColumn: Account Group Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Account Type ID'
+		dataType: string
+		lineageTag: efb2066e-7eb2-4bbc-9f7b-501caae38aa3
+		summarizeBy: none
+		sourceColumn: Account Type ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Account Type Name'
+		dataType: string
+		lineageTag: 1ee81a36-243c-4983-afbe-2ccd91fbca50
+		summarizeBy: none
+		sourceColumn: Account Type Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Account Type Category'
+		dataType: string
+		lineageTag: 0fb3b060-a334-4ccb-9dbc-42934b2faabb
+		summarizeBy: none
+		sourceColumn: Account Type Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Account Type Parameter'
+		dataType: string
+		lineageTag: 15506553-8673-464a-ae1c-3dc5a5f72d51
+		summarizeBy: none
+		sourceColumn: Account Type Parameter
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Margin Excluded'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b6a32b56-76a4-4fb8-b065-006e0283ce77
+		summarizeBy: none
+		sourceColumn: Is Margin Excluded
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Reclassified'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 102537ee-67a2-47a4-a0aa-6a7f92ffa963
+		summarizeBy: none
+		sourceColumn: Is Reclassified
+
+		annotation SummarizationSetBy = Automatic
+
+	column Qty
+		dataType: double
+		lineageTag: 6d4ae72b-238d-495e-bcc6-63adc6cf1d8b
+		summarizeBy: sum
+		sourceColumn: Qty
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Unit Prize'
+		dataType: double
+		lineageTag: 6f805b30-5eef-4b80-846c-988f7e87ca14
+		summarizeBy: sum
+		sourceColumn: Unit Prize
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Currency0
+		dataType: string
+		lineageTag: 5fba9988-2b88-4133-9522-bcc25cf7c27d
+		summarizeBy: none
+		sourceColumn: Currency0
+
+		annotation SummarizationSetBy = Automatic
+
+	column Amount0
+		dataType: double
+		lineageTag: f5bb30ea-4f44-46dc-9ba7-abfd8a7cd8e8
+		summarizeBy: sum
+		sourceColumn: Amount0
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Tax ID'
+		dataType: string
+		lineageTag: a28d7658-5ff5-48f0-bafd-9f231fcba362
+		summarizeBy: none
+		sourceColumn: Tax ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column VAT0
+		dataType: double
+		lineageTag: 439833da-1a6b-4d4e-b037-1b810f75c73b
+		summarizeBy: sum
+		sourceColumn: VAT0
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Currency1
+		dataType: string
+		lineageTag: 2b55839d-2df2-45cb-b778-1deaeea470ee
+		summarizeBy: none
+		sourceColumn: Currency1
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Exch Rate1'
+		dataType: double
+		lineageTag: 8aaaaea5-b8d6-4994-8325-2cece8e493f6
+		summarizeBy: sum
+		sourceColumn: Exch Rate1
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Amount1
+		dataType: double
+		lineageTag: 8feb1c76-c1cd-45e7-9c5b-0873bd1782c0
+		summarizeBy: sum
+		sourceColumn: Amount1
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VAT1
+		dataType: double
+		lineageTag: f141e924-0cb2-4269-8acf-c3623efe247c
+		summarizeBy: sum
+		sourceColumn: VAT1
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Currency2
+		dataType: string
+		lineageTag: 9a6aa361-856b-4c19-975b-b1d0fe280c0e
+		summarizeBy: none
+		sourceColumn: Currency2
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Exch Rate2'
+		dataType: double
+		lineageTag: 0fa9b0a9-5351-469a-bbea-46e8beaf8e9f
+		summarizeBy: sum
+		sourceColumn: Exch Rate2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Amount2
+		dataType: double
+		lineageTag: fe5c996f-971a-43a4-9226-59348baea096
+		summarizeBy: sum
+		sourceColumn: Amount2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column VAT2
+		dataType: double
+		lineageTag: e4e30bfc-741d-4e89-a528-c8955899f5ac
+		summarizeBy: sum
+		sourceColumn: VAT2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Cost Center ID'
+		dataType: string
+		lineageTag: 858bef58-80ac-4d5e-9584-f130afd74c1f
+		summarizeBy: none
+		sourceColumn: Cost Center ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cost Center Name'
+		dataType: string
+		lineageTag: c8de3ea5-b423-486c-be64-6e669bc8bdff
+		summarizeBy: none
+		sourceColumn: Cost Center Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cost Center Group'
+		dataType: string
+		lineageTag: b92eadb9-36b5-41c5-a691-c1841bb9a560
+		summarizeBy: none
+		sourceColumn: Cost Center Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cost Center Mapping'
+		dataType: string
+		lineageTag: 7b4e705c-9d0e-4eb9-b2de-58185aeb7806
+		summarizeBy: none
+		sourceColumn: Cost Center Mapping
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Agency ID'
+		dataType: string
+		lineageTag: f5e29aa8-cfa7-456c-afdc-99e867665439
+		summarizeBy: none
+		sourceColumn: Agency ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Agency Name'
+		dataType: string
+		lineageTag: 49e86d53-6315-416e-82c9-942ca6954efb
+		summarizeBy: none
+		sourceColumn: Agency Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Agency Branch'
+		dataType: string
+		lineageTag: f4dccd84-2959-4fec-8108-c06554df53bb
+		summarizeBy: none
+		sourceColumn: Agency Branch
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Agency Group Id'
+		dataType: string
+		lineageTag: 382298fd-871f-4078-8710-b1b985cc0d0c
+		summarizeBy: none
+		sourceColumn: Agency Group Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Agency Group Name'
+		dataType: string
+		lineageTag: 7a5665d3-3319-49d7-94d2-51744a12895d
+		summarizeBy: none
+		sourceColumn: Agency Group Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Journal
+		dataType: string
+		lineageTag: 2ed4bd37-dd2e-4a16-9ca5-e1841e9ccffa
+		summarizeBy: none
+		sourceColumn: Journal
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Doc Type ID'
+		dataType: string
+		lineageTag: fc9c32d8-2c23-4456-9b5b-2016de204277
+		summarizeBy: none
+		sourceColumn: Doc Type ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Doc Type Name'
+		dataType: string
+		lineageTag: 6d060693-4fe4-4956-b300-b121aa106bf8
+		summarizeBy: none
+		sourceColumn: Doc Type Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Doc Category ID'
+		dataType: string
+		lineageTag: 231505a6-8f79-4a31-8c75-0fc5e62fca9d
+		summarizeBy: none
+		sourceColumn: Doc Category ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Doc Category Name'
+		dataType: string
+		lineageTag: 31b4f117-fca1-4c54-9af6-e714482a95c4
+		summarizeBy: none
+		sourceColumn: Doc Category Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Doc Numbering Type ID'
+		dataType: string
+		lineageTag: 20955f06-20f9-4d46-bdcb-08b9dad829ca
+		summarizeBy: none
+		sourceColumn: Doc Numbering Type ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Doc Numbering Type Name'
+		dataType: string
+		lineageTag: 03436c16-2c8b-40be-be40-845702f4318a
+		summarizeBy: none
+		sourceColumn: Doc Numbering Type Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PST Status ID'
+		dataType: string
+		lineageTag: 13f04dc7-7225-4bed-a00c-ec5543e075e6
+		summarizeBy: none
+		sourceColumn: PST Status ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PST Status Name'
+		dataType: string
+		lineageTag: 0e1dadd8-4aea-4d39-8655-25e363cca810
+		summarizeBy: none
+		sourceColumn: PST Status Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Outstanding Sign'
+		dataType: int64
+		formatString: 0
+		lineageTag: d0235137-42be-4b28-b730-a755c4ce93ef
+		summarizeBy: sum
+		sourceColumn: Outstanding Sign
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Doc Reference'
+		dataType: string
+		lineageTag: 495f2d57-98ea-4216-9b31-f73e4721dd5f
+		summarizeBy: none
+		sourceColumn: Doc Reference
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Document Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 85176009-3bec-4a5b-9eb9-796542bae580
+		summarizeBy: none
+		sourceColumn: Document Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Transaction Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d95e286c-8007-4877-a0b5-1dface696495
+		summarizeBy: none
+		sourceColumn: Transaction Date
+
+		variation Variation
+			isDefault
+			relationship: a88ff61e-f45f-456c-b3cd-8421452d56a4
+			defaultHierarchy: LocalDateTable_87ef0f5e-4d4f-4e42-9a35-5f4d41d2ddc2.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subject
+		dataType: string
+		lineageTag: 4320af2f-b2ba-43b9-a933-bb9e1084afb3
+		summarizeBy: none
+		sourceColumn: Subject
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Responsible ID'
+		dataType: string
+		lineageTag: eb18d8cd-06b9-402e-a114-f43238599275
+		summarizeBy: none
+		sourceColumn: Responsible ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Responsible Name'
+		dataType: string
+		lineageTag: 6b9309ae-d980-4ed7-bf5e-1aa1ecb6086d
+		summarizeBy: none
+		sourceColumn: Responsible Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Validation Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: cb247b20-9978-4cf8-a8d8-fa6abffab707
+		summarizeBy: none
+		sourceColumn: Validation Date
+
+		variation Variation
+			isDefault
+			relationship: 961b5237-ac0a-463b-b2f3-c68fb3ddab41
+			defaultHierarchy: LocalDateTable_915873c9-1722-4093-9c34-b8a09e64fb83.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Posting Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c995778a-2520-4107-911b-41a14f701ea9
+		summarizeBy: none
+		sourceColumn: Posting Date
+
+		variation Variation
+			isDefault
+			relationship: 8d8fc1a1-e7d7-4665-aa0c-c9fb8db29a48
+			defaultHierarchy: LocalDateTable_43b73c19-0cbc-40cd-8594-a1a9d6b7093d.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Accounting Period'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 66ec17f8-16d8-424d-a1be-85a0fa392d2b
+		summarizeBy: none
+		sourceColumn: Accounting Period
+
+		variation Variation
+			isDefault
+			relationship: 2bae19ab-75b7-42d5-8ae6-9ee98a4edebe
+			defaultHierarchy: LocalDateTable_32c22b1a-67a1-4414-92f2-c399805db407.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reversal Doc No'
+		dataType: string
+		lineageTag: c0aa2c80-9d4c-4e6d-8068-2a5206160b3b
+		summarizeBy: none
+		sourceColumn: Reversal Doc No
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Allocate Status'
+		dataType: string
+		lineageTag: 7f668ab8-ea2d-417f-a6fd-627fc809330e
+		summarizeBy: none
+		sourceColumn: Allocate Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column Outstanding0
+		dataType: double
+		lineageTag: 15a8eea6-6cab-4fe5-aeaa-770979330682
+		summarizeBy: sum
+		sourceColumn: Outstanding0
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Is Period Closed'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 68728c70-9794-4af3-a252-de87c547f076
+		summarizeBy: none
+		sourceColumn: Is Period Closed
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Posted'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e4cf59fa-b886-433d-9e68-06ca357ecaf5
+		summarizeBy: none
+		sourceColumn: Is Posted
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Doc Status ID'
+		dataType: string
+		lineageTag: 347b72bc-e237-4a75-9f30-222a5e8f390b
+		summarizeBy: none
+		sourceColumn: Doc Status ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Doc Status Name'
+		dataType: string
+		lineageTag: 85f50b0a-372a-4df6-8da0-e2f1ce3e9282
+		summarizeBy: none
+		sourceColumn: Doc Status Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Third-Party ID'
+		dataType: string
+		lineageTag: f608ba07-d330-4fd1-95cf-3876cc2403b3
+		summarizeBy: none
+		sourceColumn: Third-Party ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Third-Party Name'
+		dataType: string
+		lineageTag: 57aefc13-1f40-4a57-8b74-6af8440acc86
+		summarizeBy: none
+		sourceColumn: Third-Party Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Allocate Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6dca82b8-2f6c-4e7f-a6e2-c3dc8aa0ff73
+		summarizeBy: none
+		sourceColumn: Allocate Date
+
+		variation Variation
+			isDefault
+			relationship: 5e7bc844-42bd-4788-bad5-a1184c4b405e
+			defaultHierarchy: LocalDateTable_6b1ec421-14e1-487a-9a14-78cc86e43cea.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sale Item ID'
+		dataType: string
+		lineageTag: ec0f28dd-20af-49f3-9486-36084f2ab853
+		summarizeBy: none
+		sourceColumn: Sale Item ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sale Item Name'
+		dataType: string
+		lineageTag: 2439f634-2d64-44f0-b1cd-e2d7c0f857d0
+		summarizeBy: none
+		sourceColumn: Sale Item Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sale SubGroup ID'
+		dataType: string
+		lineageTag: 915005de-660e-4d01-ae76-71ddef4b1f5c
+		summarizeBy: none
+		sourceColumn: Sale SubGroup ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sale SubGroup Name'
+		dataType: string
+		lineageTag: 42a1d6bd-5c2e-44db-8133-458d4788e479
+		summarizeBy: none
+		sourceColumn: Sale SubGroup Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sale Group ID'
+		dataType: string
+		lineageTag: 2dc8e343-0a11-4929-aaa4-9c5ea94e1116
+		summarizeBy: none
+		sourceColumn: Sale Group ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sale Group Name'
+		dataType: string
+		lineageTag: bc784a89-88df-42ef-a0dd-31befe7e23bd
+		summarizeBy: none
+		sourceColumn: Sale Group Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Analytical Grouping'
+		dataType: string
+		lineageTag: fb839428-a365-4745-a076-6bf6c8952ce2
+		summarizeBy: none
+		sourceColumn: Analytical Grouping
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Article Group'
+		dataType: string
+		lineageTag: c3a276bb-9815-44db-ad50-fb40d48ffbf9
+		summarizeBy: none
+		sourceColumn: Article Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column SubFile
+		dataType: string
+		lineageTag: 025f0938-71da-4849-af59-adfd7d1e0055
+		summarizeBy: none
+		sourceColumn: SubFile
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer ID'
+		dataType: string
+		lineageTag: 8b007b24-e845-4b0d-8b4f-541585a3c044
+		summarizeBy: none
+		sourceColumn: Customer ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Name'
+		dataType: string
+		lineageTag: 00727648-3652-481c-97f9-8ae9fb5db832
+		summarizeBy: none
+		sourceColumn: Customer Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'File No'
+		dataType: string
+		lineageTag: fb220280-642d-4471-8437-0c923aaa6fd3
+		summarizeBy: none
+		sourceColumn: File No
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Master Customer ID'
+		dataType: string
+		lineageTag: 216dac3e-a40e-4c5e-8c2f-3d0b19256870
+		summarizeBy: none
+		sourceColumn: Master Customer ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Master Customer Name'
+		dataType: string
+		lineageTag: 4f910e93-9b77-402f-9780-2129c5ab8c9f
+		summarizeBy: none
+		sourceColumn: Master Customer Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Group ID'
+		dataType: string
+		lineageTag: 02551279-ba3c-4676-9230-c0e2077e54a0
+		summarizeBy: none
+		sourceColumn: Customer Group ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Group Name'
+		dataType: string
+		lineageTag: 64e4d024-a53e-432a-868a-59e73d5722cb
+		summarizeBy: none
+		sourceColumn: Customer Group Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'File Type ID'
+		dataType: string
+		lineageTag: 63747d4f-fce3-4c37-ba8d-bf0cda42f49e
+		summarizeBy: none
+		sourceColumn: File Type ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'File Type Name'
+		dataType: string
+		lineageTag: 363a44b9-605c-4511-9ed8-2a2975e6af7b
+		summarizeBy: none
+		sourceColumn: File Type Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Activity ID'
+		dataType: string
+		lineageTag: de8e448a-4307-4b6f-99b2-7b7108faf2de
+		summarizeBy: none
+		sourceColumn: Activity ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Activity Name'
+		dataType: string
+		lineageTag: c37a19ee-3034-444c-a01f-54ce506d01f5
+		summarizeBy: none
+		sourceColumn: Activity Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Module ID'
+		dataType: string
+		lineageTag: 07f1b947-5bff-408e-ad59-5cb357acf9b8
+		summarizeBy: none
+		sourceColumn: Module ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Module Name'
+		dataType: string
+		lineageTag: 9faada03-59f4-427a-9283-0ad1c1c2b1bf
+		summarizeBy: none
+		sourceColumn: Module Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Traffic ID'
+		dataType: string
+		lineageTag: 085283c9-4282-4f8b-8c90-6b62ee56a9ce
+		summarizeBy: none
+		sourceColumn: Traffic ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Traffic Name'
+		dataType: string
+		lineageTag: b65e3d76-b0c3-4658-83cd-fc6301a78baa
+		summarizeBy: none
+		sourceColumn: Traffic Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Transport Mode ID'
+		dataType: string
+		lineageTag: 97819ef7-5cd6-4775-90d4-ab34627bf7a8
+		summarizeBy: none
+		sourceColumn: Transport Mode ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Transport Mode Name'
+		dataType: string
+		lineageTag: 4d541d76-491c-4eed-b2e1-e30213ff6101
+		summarizeBy: none
+		sourceColumn: Transport Mode Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Division ID'
+		dataType: string
+		lineageTag: a5842ea5-5580-4044-876e-67f7808c16cf
+		summarizeBy: none
+		sourceColumn: Division ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Division Name'
+		dataType: string
+		lineageTag: 1d21090e-7e95-4c73-9a10-f4d6a8d73b73
+		summarizeBy: none
+		sourceColumn: Division Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Warehousing'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 7d2b3d31-da3f-4e76-b606-01fc80659d3a
+		summarizeBy: none
+		sourceColumn: Is Warehousing
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Invoiced'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 9f738d64-e7ec-42bf-8a6b-6957e78b02e5
+		summarizeBy: none
+		sourceColumn: Is Invoiced
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'File Period'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 76f3bda1-d0e9-4d20-8260-09d18880b3ec
+		summarizeBy: none
+		sourceColumn: File Period
+
+		variation Variation
+			isDefault
+			relationship: 662a93e5-d4e9-4b2d-8769-70777c0acac2
+			defaultHierarchy: LocalDateTable_5305dbdb-ea6e-4f7d-bf00-6f70e1adb3af.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'File Status ID'
+		dataType: string
+		lineageTag: 0a8ef4c2-b7a2-452a-8963-fff2256f5af9
+		summarizeBy: none
+		sourceColumn: File Status ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'File Status Name'
+		dataType: string
+		lineageTag: a98cd403-fa28-4004-98c5-1845626e43d1
+		summarizeBy: none
+		sourceColumn: File Status Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'SFX Transactions_DETAILS' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("SFX-HP-01", "BrainOpxOMAGH0"),
+				    SFX_Transactions_DETAILS = Source{[Schema="SFX",Item="Transactions_DETAILS"]}[Data]
+				in
+				    SFX_Transactions_DETAILS
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

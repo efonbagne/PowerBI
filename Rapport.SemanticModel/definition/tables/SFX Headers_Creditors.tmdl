@@ -1,0 +1,271 @@
+table 'SFX Headers_Creditors'
+	lineageTag: 0f9a59f8-f496-4132-b4e0-4f92796be2f1
+
+	column 'Doc No'
+		dataType: string
+		lineageTag: 9f3045c9-8678-433f-a169-a333e37d9b06
+		summarizeBy: none
+		sourceColumn: Doc No
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Outstanding Sign'
+		dataType: decimal
+		formatString: #,0.###############\ "FCFA";-#,0.###############\ "FCFA";#,0.###############\ "FCFA"
+		lineageTag: 65d229bd-e54e-42be-825a-d956c405ef46
+		summarizeBy: sum
+		sourceColumn: Outstanding Sign
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"fr-CM"}
+
+	column 'Creditor ID'
+		dataType: string
+		lineageTag: 6dbd195b-ff0a-4cb4-99b8-4607262504cd
+		summarizeBy: none
+		sourceColumn: Creditor ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Creditor Name'
+		dataType: string
+		lineageTag: cc46fb50-1b45-4bff-90c3-f7ba06d629a2
+		summarizeBy: none
+		sourceColumn: Creditor Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Document Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6bfe6150-3985-4ee7-bdea-521fb77ce8c1
+		summarizeBy: none
+		sourceColumn: Document Date
+
+		variation Variation
+			isDefault
+			relationship: 4c556e04-99d9-4891-abc1-3af6595fffd0
+			defaultHierarchy: LocalDateTable_198543a5-7478-4a37-9d82-48814414b75c.'Hiérarchie de dates'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subject
+		dataType: string
+		lineageTag: b597d583-3243-4802-ad27-1b850afd4530
+		summarizeBy: none
+		sourceColumn: Subject
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Responsible ID'
+		dataType: string
+		lineageTag: 8d0652e3-a889-4672-85a2-381cba505045
+		summarizeBy: none
+		sourceColumn: Responsible ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Responsible Name'
+		dataType: string
+		lineageTag: 64bce18b-5d00-48f0-8a41-b8507aa9bfa2
+		summarizeBy: none
+		sourceColumn: Responsible Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Amount0'
+		dataType: decimal
+		formatString: #,0.###############\ "FCFA";-#,0.###############\ "FCFA";#,0.###############\ "FCFA"
+		lineageTag: a35bf313-0130-47bd-90bc-3d0712f9b18f
+		summarizeBy: sum
+		sourceColumn: Total Amount0
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"fr-CM"}
+
+	column Outstanding0
+		dataType: decimal
+		formatString: #,0.###############\ "FCFA";-#,0.###############\ "FCFA";#,0.###############\ "FCFA"
+		lineageTag: 8bacf37b-57f7-4fbc-be39-ce656a536eea
+		summarizeBy: sum
+		sourceColumn: Outstanding0
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"fr-CM"}
+
+	column 'Exch Rate1'
+		dataType: double
+		lineageTag: 02d86afe-40b1-4b91-aa1d-3aea22ec2ebb
+		summarizeBy: sum
+		sourceColumn: Exch Rate1
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Total Amount1'
+		dataType: decimal
+		formatString: #,0.###############\ "FCFA";-#,0.###############\ "FCFA";#,0.###############\ "FCFA"
+		lineageTag: 6b1b3038-8586-439f-b702-538e2b120fda
+		summarizeBy: sum
+		sourceColumn: Total Amount1
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"fr-CM"}
+
+	column Outstanding1
+		dataType: decimal
+		formatString: #,0.###############\ "FCFA";-#,0.###############\ "FCFA";#,0.###############\ "FCFA"
+		lineageTag: c6f33007-4a21-4da5-b70f-f0a60b8a632e
+		summarizeBy: sum
+		sourceColumn: Outstanding1
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"fr-CM"}
+
+	column 'Total Amount2'
+		dataType: decimal
+		formatString: #,0.###############\ "FCFA";-#,0.###############\ "FCFA";#,0.###############\ "FCFA"
+		lineageTag: b629a8a0-2eda-4e70-8948-49dcc5b89ad0
+		summarizeBy: sum
+		sourceColumn: Total Amount2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"fr-CM"}
+
+	column Outstanding2
+		dataType: decimal
+		formatString: #,0.###############\ "FCFA";-#,0.###############\ "FCFA";#,0.###############\ "FCFA"
+		lineageTag: 64887a78-210d-40ac-b9fb-1a7ebc3ca68c
+		summarizeBy: sum
+		sourceColumn: Outstanding2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"fr-CM"}
+
+	column SubFile
+		dataType: string
+		lineageTag: 337b7b23-c44e-4b41-ba46-257708d308d6
+		summarizeBy: none
+		sourceColumn: SubFile
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'File No'
+		dataType: string
+		lineageTag: fbe4f96f-fcfc-4a90-9843-ee8437cd87dc
+		summarizeBy: none
+		sourceColumn: File No
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Master Customer ID'
+		dataType: string
+		lineageTag: c3f3249b-b3c6-48d8-9f09-f6819e4f5326
+		summarizeBy: none
+		sourceColumn: Master Customer ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Master Customer Name'
+		dataType: string
+		lineageTag: a894305b-c7f0-4852-8e8b-a5c04fe53519
+		summarizeBy: none
+		sourceColumn: Master Customer Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'File Type ID'
+		dataType: string
+		lineageTag: c0b26f8b-5ada-44aa-8010-4432059c010b
+		summarizeBy: none
+		sourceColumn: File Type ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'File Type Name'
+		dataType: string
+		lineageTag: ad6a4c93-7da3-49e8-9bb7-39df0aac5dad
+		summarizeBy: none
+		sourceColumn: File Type Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Activity ID'
+		dataType: string
+		lineageTag: e4c56474-3884-4f0f-a31b-ef1b58c2a5ac
+		summarizeBy: none
+		sourceColumn: Activity ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Module ID'
+		dataType: string
+		lineageTag: d954a753-5cc8-46ac-8825-db9be7d9107e
+		summarizeBy: none
+		sourceColumn: Module ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Module Name'
+		dataType: string
+		lineageTag: 9087c4a6-0c6f-4ea8-bccd-00bf4dc1503e
+		summarizeBy: none
+		sourceColumn: Module Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Allocate Status'
+		dataType: string
+		lineageTag: ce14b292-8f70-4d23-89a2-ed1ceb8170a2
+		summarizeBy: none
+		sourceColumn: Allocate Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Doc Status ID'
+		dataType: string
+		lineageTag: 19433fbd-01ee-47b5-aa0a-b5c1624703ab
+		summarizeBy: none
+		sourceColumn: Doc Status ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Doc Status Name'
+		dataType: string
+		lineageTag: 3fa97ec7-d62c-478a-b90b-ba4ad587348c
+		summarizeBy: none
+		sourceColumn: Doc Status Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'SFX Headers_Creditors' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Databases("SFX-HP-01"),
+				    BopxCWE = Source{[Name="BrainOpxOMAGH0"]}[Data],
+				    SFX_Headers_Creditors = BopxCWE{[Schema="SFX",Item="Headers_Creditors"]}[Data],
+				    #"Colonnes supprimées" = Table.RemoveColumns(SFX_Headers_Creditors,{"Tmp Doc No", "Agency ID", "Agency Name", "Agency Type", "Agency Branch", "Agency Group Id", "Agency Group Name", "Doc Type ID", "Doc Type Name", "Doc Category ID", "Doc Category Name", "Doc Numbering Type ID", "Doc Numbering Type Name"}),
+				    #"Type modifié" = Table.TransformColumnTypes(#"Colonnes supprimées",{{"Outstanding Sign", Currency.Type}}),
+				    #"Colonnes supprimées1" = Table.RemoveColumns(#"Type modifié",{"Creditor Account No", "Creditor Account Name", "Creditor Type ID", "Creditor Type Name", "Is Creditor Enabled", "Creditor Comment", "Payment Term ID", "Payment Term Name", "VAT ID", "Cashbook ID", "Cashbook Name", "Doc Reference", "Accounting Period", "Transaction Date", "Deadline Date", "Payment Mode ID", "Payment Mode Name", "Currency0"}),
+				    #"Type modifié1" = Table.TransformColumnTypes(#"Colonnes supprimées1",{{"Total Amount0", Currency.Type}, {"Outstanding0", Currency.Type}}),
+				    #"Colonnes supprimées2" = Table.RemoveColumns(#"Type modifié1",{"Currency1"}),
+				    #"Type modifié2" = Table.TransformColumnTypes(#"Colonnes supprimées2",{{"Total Amount1", Currency.Type}, {"Outstanding1", Currency.Type}}),
+				    #"Colonnes supprimées3" = Table.RemoveColumns(#"Type modifié2",{"Currency2", "Exch Rate2"}),
+				    #"Type modifié3" = Table.TransformColumnTypes(#"Colonnes supprimées3",{{"Total Amount2", Currency.Type}, {"Outstanding2", Currency.Type}}),
+				    #"Colonnes supprimées4" = Table.RemoveColumns(#"Type modifié3",{"Customer Ref", "Activity Name", "Reversal Doc No", "Validation Date", "Posting Date", "Is Verify", "Is Posted", "Is Locked", "Is Litigation", "Is Payment Approved", "Last Allocate Date", "Payment Type ID", "Payment Type Name", "Print Status", "Doc Duration", "Doc Observation", "Doc Creation Date", "Creator ID", "Creator Name", "Doc Last Update Date"})
+				in
+				    #"Colonnes supprimées4"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,174 @@
+table Calendrier
+	lineageTag: d94fa45b-a223-4ca0-98f4-7cc17d8314f8
+	dataCategory: Time
+
+	measure 'Marge Brute XOF' =
+			
+			SUM('SFX Sale_Details'[Amount1]) - SUM('SFX Purchase_Details'[Amount1])
+		lineageTag: 4cee1df7-8f4b-4b32-8971-ba5a919a03cc
+
+		extendedProperty MeasureTemplate =
+				{
+				  "version": 0,
+				  "daxTemplateName": "MathematicalSubtraction"
+				}
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Somme de Amount2 moins Somme de Amount2' =
+			
+			SUM('SFX Sale_Details'[Amount2]) - SUM('SFX Purchase_Details'[Amount2])
+		lineageTag: 4d4c3a92-b521-4a5e-81e3-9dbe27dc0ef7
+
+		extendedProperty MeasureTemplate =
+				{
+				  "version": 0,
+				  "daxTemplateName": "MathematicalSubtraction"
+				}
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Date
+		isKey
+		formatString: General Date
+		lineageTag: 6f1b0094-f9e8-43b1-8b0e-6a99dd42ca35
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Annee
+		lineageTag: 77be600f-9e54-48dc-845c-a2e395b38b89
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Annee]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Trimestre
+		lineageTag: 5df93d0f-25eb-45e1-9e05-7e8feb257757
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Trimestre]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Annee mois'
+		lineageTag: a0f612c5-29b4-4993-82b9-567658cbd183
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Annee mois]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nom du mois'
+		lineageTag: b5462f45-41ce-4707-865c-08fb5b8168e4
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Nom du mois]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Numero du mois'
+		dataType: string
+		lineageTag: dc09afc3-0278-4066-93bd-c9a2e948c79f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Numero du mois]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Semaine
+		lineageTag: 18d3b244-b368-4dfe-9d5a-fa3c34ee5154
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Semaine]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nom du jour'
+		lineageTag: 1a16d0bf-7011-4fb9-aa8c-c7582f4c3284
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Nom du jour]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Numero du jour'
+		dataType: string
+		lineageTag: ecd33c28-6f22-46b8-b695-e07baa93d7da
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Numero du jour]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Annee-Trimestre
+		lineageTag: fa4509c9-e4e7-48b5-9e8b-5135e8b258b1
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Annee-Trimestre]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Jour ouvré'
+		lineageTag: 6ea853c0-f741-44c4-81a6-14fc7dc9dfeb
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Jour ouvré]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date complète'
+		lineageTag: 33a76a5a-cafa-45bf-a82c-cb4453375a08
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date complète]
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsCurrentMonth
+		lineageTag: 678e3986-11ce-4654-8d73-c1cd0dab7f44
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [IsCurrentMonth]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Calendrier = calculated
+		mode: import
+		source = ```
+				
+				ADDCOLUMNS(
+				    CALENDAR(DATE(2016,1,1), DATE(2025,12,31)),
+				    
+				    -- Format classiques
+				    "Annee", FORMAT([Date], "YYYY"),
+				    "Trimestre", "T" & FORMAT([Date], "Q"),
+				    "Annee-Trimestre", FORMAT([Date], "YYYY") & "-T" & FORMAT([Date], "Q"),
+				    "Annee mois", FORMAT([Date], "YYYYMM"),
+				    "Nom du mois", FORMAT([Date], "MMMM"),
+				    "Numero du mois", MONTH([Date]),
+				
+				    -- Semaine et jour
+				    "Semaine", FORMAT([Date], "YYYY") & "S" & WEEKNUM([Date], 21),
+				    "Nom du jour", FORMAT([Date], "dddd"),
+				    "Numero du jour", WEEKDAY([Date], 2),
+				    "Jour ouvré", IF(WEEKDAY([Date], 2) > 5, "Week-end", "Semaine"),
+				
+				    -- Format lisible
+				    "Date complète", FORMAT([Date], "DD MMMM YYYY"),
+				
+				    -- Mois actuel ?
+				    "IsCurrentMonth", IF(
+				        FORMAT([Date], "YYYYMM") = FORMAT(TODAY(), "YYYYMM"), 
+				        "Oui", 
+				        "Non"
+				    )
+				)
+				
+				```
+
+	annotation PBI_Id = 6e0fca772f334085af2bcf00ad03fd2d
+

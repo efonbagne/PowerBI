@@ -1,0 +1,145 @@
+relationship 0b77783b-b4f4-41ba-a2ee-63f88deea493
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'SFX Purchase_Details'.'File Period'
+	toColumn: LocalDateTable_c7d6221c-19c8-4024-bc9f-609d0525982c.Date
+
+relationship fb31e1c5-5b1a-4a5f-91bc-dfe84cc10662
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'SFX Sale_Details'.'Transaction Date'
+	toColumn: LocalDateTable_70e0c51b-9a68-4069-bc06-d896bbaccbdb.Date
+
+relationship 3900572f-d20a-4ef6-a18d-5989c28e032f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'SFX Sale_Details'.'Validation Date'
+	toColumn: LocalDateTable_071f818a-e6d2-426b-a9aa-03be267ac438.Date
+
+relationship 57058211-4a7d-4184-8ab4-e25c87c7ab1d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'SFX Sale_Details'.'Posting Date'
+	toColumn: LocalDateTable_ba29305e-b433-41a4-a788-e4ecfedfc20d.Date
+
+relationship fb8cbe25-bc67-441c-aa67-f9bce2b0222c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'SFX Sale_Details'.'Operation Date'
+	toColumn: LocalDateTable_037e1261-69d4-4b20-93b8-5f32980cc3af.Date
+
+relationship 961b5237-ac0a-463b-b2f3-c68fb3ddab41
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'SFX Transactions_DETAILS'.'Validation Date'
+	toColumn: LocalDateTable_915873c9-1722-4093-9c34-b8a09e64fb83.Date
+
+relationship 8d8fc1a1-e7d7-4665-aa0c-c9fb8db29a48
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'SFX Transactions_DETAILS'.'Posting Date'
+	toColumn: LocalDateTable_43b73c19-0cbc-40cd-8594-a1a9d6b7093d.Date
+
+relationship 2bae19ab-75b7-42d5-8ae6-9ee98a4edebe
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'SFX Transactions_DETAILS'.'Accounting Period'
+	toColumn: LocalDateTable_32c22b1a-67a1-4414-92f2-c399805db407.Date
+
+relationship 5e7bc844-42bd-4788-bad5-a1184c4b405e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'SFX Transactions_DETAILS'.'Allocate Date'
+	toColumn: LocalDateTable_6b1ec421-14e1-487a-9a14-78cc86e43cea.Date
+
+relationship 662a93e5-d4e9-4b2d-8769-70777c0acac2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'SFX Transactions_DETAILS'.'File Period'
+	toColumn: LocalDateTable_5305dbdb-ea6e-4f7d-bf00-6f70e1adb3af.Date
+
+relationship 1e7acc53-065e-4d2d-8eae-ddeae48062b3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'SFX Sale_Details'.'File Period'
+	toColumn: LocalDateTable_504a3a66-5eb2-402e-96e5-b1054f07267b.Date
+
+relationship d39a26bf-ebc0-4ad6-ba17-a5209d06897f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'SFX Sale_Details'.'Accounting Period'
+	toColumn: LocalDateTable_842dc967-5241-4e8f-aaa8-e94aa66ec074.Date
+
+relationship 192323da-1aa8-4de7-aa6d-d64afd46d3fd
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'SFX Purchase_Details'.'Accounting Period'
+	toColumn: LocalDateTable_664a1eb5-2f34-46c0-9552-d55fbed04416.Date
+
+relationship a88ff61e-f45f-456c-b3cd-8421452d56a4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'SFX Transactions_DETAILS'.'Transaction Date'
+	toColumn: LocalDateTable_87ef0f5e-4d4f-4e42-9a35-5f4d41d2ddc2.Date
+
+relationship dcc874ca-b5c4-cd02-850c-4662ca749ed6
+	fromColumn: 'SFX Purchase_Details'.SubFile
+	toColumn: 'SFX vw_SubFiles'.SubFile
+
+relationship 38d91c59-8dab-c00b-3702-dc1ba62ed4d9
+	fromColumn: 'SFX Sale_Details'.SubFile
+	toColumn: 'SFX vw_SubFiles'.SubFile
+
+relationship 4c556e04-99d9-4891-abc1-3af6595fffd0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'SFX Headers_Creditors'.'Document Date'
+	toColumn: LocalDateTable_198543a5-7478-4a37-9d82-48814414b75c.Date
+
+relationship 99dc8c11-c32e-4082-92ff-885fe7e696f4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'SFX Headers_Debtors'.'Transaction Date'
+	toColumn: LocalDateTable_527c943f-e554-4b42-8084-6c5cb4e76183.Date
+
+relationship 622757dc-6f55-42ee-81f7-008c1fd8d19b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'SFX vw_SubFiles_Operations'.'Request Date'
+	toColumn: LocalDateTable_3dbcaf63-a1d3-4848-827b-daddb05dcd00.Date
+
+relationship 668b654c-2af7-44f2-a6fd-06e752e28ab2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'SFX vw_SubFiles_Operations'.'Operation Date'
+	toColumn: LocalDateTable_4aeb279c-3d66-4779-a837-dc76217d61e9.Date
+
+relationship 17870e2c-e836-473e-8595-b65f521206b7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'SFX vw_SubFiles_Operations'.'Operation Closing Date'
+	toColumn: LocalDateTable_54df0c4d-e928-4c8e-8aea-9afab295cb64.Date
+
+relationship e864e629-cdbb-4691-bbd8-b9db81232483
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'SFX vw_SubFiles_Operations'.'File Period'
+	toColumn: LocalDateTable_fe0d4507-5024-4ab4-bf8a-44a3a713cbb2.Date
+
+relationship 1fcfae76-3c97-4884-9f39-c6a7725c4322
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'SFX vw_SubFiles_Operations'.'Opening Date'
+	toColumn: LocalDateTable_83793daf-614d-44b4-9b99-5929292b0e8b.Date
+
+relationship bc6bc856-20b2-4964-9a4d-7ee9404a332b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'SFX vw_SubFiles_Operations'.'Closing Date'
+	toColumn: LocalDateTable_9d9523cc-8be0-45ec-8607-971f640990b4.Date
+
+relationship 6534273e-c780-4ff3-9e3e-9093f8667204
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'SFX Purchase_Details'.'Document Date'
+	toColumn: LocalDateTable_64ae21c6-bfd0-44f2-989e-20dac19c1340.Date
+
+relationship 57bffc18-ddd9-4161-a483-9c201ad38fc0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'SFX Sale_Details'.'Document Date'
+	toColumn: LocalDateTable_41675131-24ce-433a-88e7-aa5103576059.Date
+
+relationship 36acaf09-6273-8311-46c9-69626c21d432
+	fromColumn: 'SFX vw_SubFiles'.'File Status ID'
+	toColumn: tn_Statuts_Dossiers.'Code Statut Dossier'
+
+relationship 8ee1e6db-edfc-edfe-5c3f-2767524406c1
+	fromColumn: 'SFX Transactions_DETAILS'.SubFile
+	toColumn: 'SFX vw_SubFiles'.SubFile
+
+relationship 50efa392-d24c-4850-86f5-a57eeb92366c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'SFX vw_SubFiles'.'File Period'
+	toColumn: LocalDateTable_d0b52597-ce27-4c05-af43-7d435d67f9e8.Date
+
+relationship 17f08cc4-bf84-5223-6bb4-c938a5d8767f
+	fromColumn: 'SFX Transactions_DETAILS'.'Document Date'
+	toColumn: Calendrier.Date
+
