@@ -1,5 +1,5 @@
 {
-  "config": "{\"version\":\"5.66\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"type\":2,\"version\":{\"visual\":\"1.8.101\",\"report\":\"2.0.101\",\"page\":\"1.3.101\"}},\"customTheme\":{\"name\":\"CopilotDefault\",\"type\":2,\"version\":{\"visual\":\"1.8.101\",\"report\":\"2.0.101\",\"page\":\"1.3.101\"}}},\"activeSectionIndex\":3,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true,\"useEnhancedTooltips\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
+  "config": "{\"version\":\"5.66\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"type\":2,\"version\":{\"visual\":\"1.8.101\",\"report\":\"2.0.101\",\"page\":\"1.3.101\"}},\"customTheme\":{\"name\":\"CopilotDefault\",\"type\":2,\"version\":{\"visual\":\"1.8.101\",\"report\":\"2.0.101\",\"page\":\"1.3.101\"}}},\"activeSectionIndex\":5,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true,\"useEnhancedTooltips\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
   "filters": "[{\"name\":\"8c72275ea54c6d18aba9\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"tn_Statuts_Dossiers\"}},\"Property\":\"Code Statut Dossier\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"tn_Statuts_Dossiers\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Code Statut Dossier\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'CLO'\"}}],[{\"Literal\":{\"Value\":\"'ECR'\"}}],[{\"Literal\":{\"Value\":\"'FAC'\"}}],[{\"Literal\":{\"Value\":\"null\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}},{\"name\":\"677d15ad0bec99d7af23\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"SFX Transactions_DETAILS\"}},\"Property\":\"Doc Status ID\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"SFX Transactions_DETAILS\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Doc Status ID\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'REA'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}}]",
   "layoutOptimization": 0,
   "resourcePackages": [
@@ -155,21 +155,12 @@
           "z": 2000.00
         },
         {
-          "config": "{\"name\":\"5c62f022a51e9a4fc983\",\"layouts\":[{\"id\":0,\"position\":{\"x\":290,\"y\":290,\"width\":990,\"height\":280,\"z\":3000,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Calendrier.Annee\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"c\",\"Entity\":\"Calendrier\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Annee\"},\"Name\":\"Calendrier.Annee\",\"NativeReferenceName\":\"Annee\"}]},\"drillFilterOtherVisuals\":true}}",
+          "config": "{\"name\":\"ba27c259663bea161288\",\"layouts\":[{\"id\":0,\"position\":{\"x\":32.19512195121951,\"y\":579.5121951219512,\"z\":1000,\"width\":237.0731707317073,\"height\":96.58536585365853,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"SFX vw_SubFiles.Nb_Dossiers\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"SFX vw_SubFiles\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Nb_Dossiers\"},\"Name\":\"SFX vw_SubFiles.Nb_Dossiers\",\"NativeReferenceName\":\"Nb_Dossiers\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Nb_Dossiers\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
           "filters": "[]",
-          "height": 280.00,
-          "width": 990.00,
-          "x": 290.00,
-          "y": 290.00,
-          "z": 3000.00
-        },
-        {
-          "config": "{\"name\":\"ba27c259663bea161288\",\"layouts\":[{\"id\":0,\"position\":{\"x\":9.78266061619298,\"y\":623.6446142823024,\"z\":1000,\"width\":237.22951994267973,\"height\":96.60377358490567,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"SFX vw_SubFiles.Nb_Dossiers\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"SFX vw_SubFiles\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Nb_Dossiers\"},\"Name\":\"SFX vw_SubFiles.Nb_Dossiers\",\"NativeReferenceName\":\"Nb_Dossiers\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Nb_Dossiers\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
-          "filters": "[]",
-          "height": 96.60,
-          "width": 237.23,
-          "x": 9.78,
-          "y": 623.64,
+          "height": 96.59,
+          "width": 237.07,
+          "x": 32.20,
+          "y": 579.51,
           "z": 1000.00
         }
       ],
